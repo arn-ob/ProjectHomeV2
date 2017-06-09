@@ -57,12 +57,12 @@ public class Main_Activity extends AppCompatActivity {
             sw4 = false,
             sw5 = false,
             sw6 = false;
-    String CheckOne = "Null" ,
-            CheckTwo = "Null",
-            CheckThree = "Null",
-            CheckFour = "Null",
-            CheckFive = "Null",
-            CheckSix = "Null";
+    String CheckOne = "0" ,
+            CheckTwo = "0",
+            CheckThree = "0",
+            CheckFour = "0",
+            CheckFive = "0",
+            CheckSix = "0";
 
 
     @Override
@@ -153,18 +153,23 @@ public class Main_Activity extends AppCompatActivity {
                                     if(s.equals("1")){
                                         CheckOne = "1";
                                     }
+
                                     if(s.equals("2")){
                                         CheckTwo = "2";
                                     }
+
                                     if(s.equals("3")){
                                         CheckThree = "3";
                                     }
+
                                     if(s.equals("4")){
                                         CheckFour = "4";
                                     }
+
                                     if(s.equals("5")){
                                         CheckFive = "5";
                                     }
+
                                     if(s.equals("6")){
                                         CheckSix = "6";
                                     }
@@ -280,7 +285,7 @@ public class Main_Activity extends AppCompatActivity {
             // Calling The acknolodgement state
             GetState();
             Thread.sleep(100);
-            RecheckSwState();
+           // RecheckSwState();
 
         }catch(Exception e){
             Toast.makeText(getApplicationContext(),"Connection Got problem",Toast.LENGTH_SHORT).show();
@@ -322,7 +327,10 @@ public class Main_Activity extends AppCompatActivity {
             beginListenForData();
             if (CheckOne.equals("1")) {
                 s1.setChecked(true);
-            }else {
+            }if (CheckOne.equals("0")) {
+                s1.setChecked(false);
+            }
+            else {
                 s1.setChecked(false);
             }
         }catch (Exception e){
@@ -331,7 +339,7 @@ public class Main_Activity extends AppCompatActivity {
 
         //Give a sleep
 
-        Thread.sleep(500);
+        Thread.sleep(50);
 
 
         // Sw 2
@@ -340,71 +348,97 @@ public class Main_Activity extends AppCompatActivity {
             beginListenForData();
             if (CheckTwo.equals("2")) {
                 s2.setChecked(true);
-            }else{
+            }if (CheckTwo.equals("0")) {
+                s2.setChecked(false);
+            }
+            else{
                 s2.setChecked(false);
             }
         }catch (Exception e){
             Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
         }
+        //Give a sleep
 
+        Thread.sleep(50);
 
         // Sw 3
         try {
             sendData("3");
             beginListenForData();
-            if (CheckTwo.equals("3")) {
-                s2.setChecked(true);
-            }else{
-                s2.setChecked(false);
+            if (CheckThree.equals("3")) {
+                s3.setChecked(true);
+            }if (CheckThree.equals("0")) {
+                s3.setChecked(false);
+            }
+            else{
+                s3.setChecked(false);
             }
         }catch (Exception e){
-            Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Cant Get Data 3",Toast.LENGTH_SHORT).show();
         }
 
+        //Give a sleep
+
+        Thread.sleep(50);
 
         // Sw 4
         try {
             sendData("4");
             beginListenForData();
-            if (CheckTwo.equals("4")) {
-                s2.setChecked(true);
-            }else{
-                s2.setChecked(false);
+            if (CheckFour.equals("4")) {
+                s4.setChecked(true);
+            }if (CheckFour.equals("0")) {
+                s4.setChecked(false);
+            }
+            else{
+                s4.setChecked(false);
             }
         }catch (Exception e){
-            Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Cant Get Data 4",Toast.LENGTH_SHORT).show();
         }
 
+        //Give a sleep
+
+        Thread.sleep(50);
 
         // Sw 5
         try {
             sendData("5");
             beginListenForData();
-            if (CheckTwo.equals("5")) {
-                s2.setChecked(true);
-            }else{
-                s2.setChecked(false);
+            if (CheckFive.equals("5")) {
+                s5.setChecked(true);
+            }if (CheckFive.equals("0")) {
+                s5.setChecked(false);
+            }
+            else{
+                s5.setChecked(false);
             }
         }catch (Exception e){
-            Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Cant Get Data 5",Toast.LENGTH_SHORT).show();
         }
 
+        //Give a sleep
+
+        Thread.sleep(50);
 
         // SW 6
         try {
             sendData("6");
             beginListenForData();
-            if (CheckTwo.equals("6")) {
-                s2.setChecked(true);
-            }else{
-                s2.setChecked(false);
+            if (CheckSix.equals("6")) {
+                s6.setChecked(true);
+            }if (CheckSix.equals("0")) {
+                s6.setChecked(false);
+            }
+            else{
+                s6.setChecked(false);
             }
         }catch (Exception e){
-            Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Cant Get Data 6",Toast.LENGTH_SHORT).show();
         }
         // GetState(); // it take infinite loop
 
-        RecheckSwState();
+        //RecheckSwState();
 
     }
 
@@ -414,18 +448,98 @@ public class Main_Activity extends AppCompatActivity {
         // Sw 1 Check
         if (CheckOne.equals("1")) {
             s1.setChecked(true);
-        }else {
+        }if (CheckOne.equals("0")) {
+            s1.setChecked(false);
+        }
+        else {
             s1.setChecked(false);
         }
 
-        Thread.sleep(100);
+
 
         // Sw 2 Check
         if (CheckTwo.equals("2")) {
             s2.setChecked(true);
-        }else{
+        }if (CheckTwo.equals("0")) {
             s2.setChecked(false);
         }
+        else{
+            s2.setChecked(false);
+        }
+
+
+
+        // Sw 3 Check
+        if (CheckThree.equals("3")) {
+            s3.setChecked(true);
+        }if (CheckThree.equals("0")) {
+            s3.setChecked(false);
+        }
+        else{
+            s3.setChecked(false);
+        }
+
+
+
+        // Sw 4 Check
+        if (CheckFour.equals("4")) {
+            s4.setChecked(true);
+        }if (CheckFour.equals("0")) {
+            s4.setChecked(false);
+        }
+        else{
+            s4.setChecked(false);
+        }
+
+
+
+        // Sw 5 Check
+        if (CheckFive.equals("5")) {
+            s5.setChecked(true);
+        }if (CheckFive.equals("0")) {
+            s5.setChecked(false);
+        }
+        else{
+            s5.setChecked(false);
+        }
+
+        // Sw 6 Check
+        if (CheckSix.equals("6")) {
+            s6.setChecked(true);
+        }if (CheckSix.equals("0")) {
+            s6.setChecked(false);
+        }
+        else{
+            s6.setChecked(false);
+        }
+
+    }
+
+    public void OnOffState(){
+
+        if(CheckOne.equals("1")){
+            CheckOne = "1";
+        }else{ CheckOne = "0";}
+
+        if(CheckTwo.equals("2")){
+            CheckTwo = "2";
+        }else{ CheckTwo = "0";}
+
+        if(CheckThree.equals("3")){
+            CheckThree = "3";
+        }else{ CheckThree = "0";}
+
+        if(CheckFour.equals("4")){
+            CheckFour = "4";
+        }else{ CheckFour = "0";}
+
+        if(CheckFive.equals("5")){
+            CheckFive = "5";
+        }else{ CheckFive = "0";}
+
+        if(CheckSix.equals("6")){
+            CheckSix = "6";
+        }else{ CheckSix = "0";}
 
     }
 
