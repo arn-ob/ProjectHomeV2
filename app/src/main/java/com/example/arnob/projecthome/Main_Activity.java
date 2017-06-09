@@ -85,7 +85,8 @@ public class Main_Activity extends AppCompatActivity {
 
 
         try{
-            MakeConnection();
+            cnt();
+
 
         }catch (Exception e){
             Toast.makeText(getApplicationContext(),"Cant Connect to BlueTooth",Toast.LENGTH_SHORT).show();
@@ -155,6 +156,18 @@ public class Main_Activity extends AppCompatActivity {
                                     if(s.equals("2")){
                                         CheckTwo = "2";
                                     }
+                                    if(s.equals("3")){
+                                        CheckThree = "3";
+                                    }
+                                    if(s.equals("4")){
+                                        CheckFour = "4";
+                                    }
+                                    if(s.equals("5")){
+                                        CheckFive = "5";
+                                    }
+                                    if(s.equals("6")){
+                                        CheckSix = "6";
+                                    }
 
 
                                 }
@@ -178,42 +191,44 @@ public class Main_Activity extends AppCompatActivity {
 
     public boolean BTinit()
     {
-        boolean found=false;
-        BluetoothAdapter bluetoothAdapter=BluetoothAdapter.getDefaultAdapter();
-        if (bluetoothAdapter == null) {
-            Toast.makeText(getApplicationContext(),"Device doesnt Support Bluetooth",Toast.LENGTH_SHORT).show();
-        }
-        if(!bluetoothAdapter.isEnabled())
-        {
-            Intent enableAdapter = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableAdapter, 0);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        try {
+            boolean found = false;
+            BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            if (bluetoothAdapter == null) {
+                Toast.makeText(getApplicationContext(), "Device doesnt Support Bluetooth", Toast.LENGTH_SHORT).show();
             }
-        }
-        Set<BluetoothDevice> bondedDevices = bluetoothAdapter.getBondedDevices();
-        if(bondedDevices.isEmpty())
-        {
-            Toast.makeText(getApplicationContext(),"Please Pair the Device first",Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            for (BluetoothDevice iterator : bondedDevices)
-            {
-                if(iterator.getAddress().equals(DEVICE_ADDRESS))
-                {
-                    device=iterator;
-                    found=true;
-                    break;
+            if (!bluetoothAdapter.isEnabled()) {
+                Intent enableAdapter = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableAdapter, 0);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
+            Set<BluetoothDevice> bondedDevices = bluetoothAdapter.getBondedDevices();
+            if (bondedDevices.isEmpty()) {
+                Toast.makeText(getApplicationContext(), "Please Pair the Device first", Toast.LENGTH_SHORT).show();
+            } else {
+                for (BluetoothDevice iterator : bondedDevices) {
+                    if (iterator.getAddress().equals(DEVICE_ADDRESS)) {
+                        device = iterator;
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            return found;
+
+        }catch (Exception e){
+
+            Toast.makeText(getApplicationContext(), "Device Got Problem With Bluetooth", Toast.LENGTH_SHORT).show();
+            return false;
+
         }
-        return found;
     }
 
-    public boolean BTconnect()
+    public boolean BTconnect ()
     {
         boolean connected=true;
         try {
@@ -245,16 +260,7 @@ public class Main_Activity extends AppCompatActivity {
     public void TryToConnect(View view){
 
             // Code Worked
-            if (CheckOne == "On") {
-                s1.setChecked(true);
-            }
-            if (ReceiveString.equals("2")) {
-                textView.append("Enter at 2");
-                s2.setChecked(true);
-            }
-
-
-
+            cnt();
 
     }
 
@@ -262,14 +268,25 @@ public class Main_Activity extends AppCompatActivity {
 
 
     public void btnConnect(View view) throws Exception{
-        MakeConnection();
 
-        // Code Worked
-        // Calling The acknolodgement state
-        GetState();
-
-
+        cnt();
     }
+
+    public void cnt(){
+        try{
+            MakeConnection();
+
+            // Code Worked
+            // Calling The acknolodgement state
+            GetState();
+            Thread.sleep(100);
+            RecheckSwState();
+
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(),"Connection Got problem",Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     // Disconnect the connection
     public void stopConnection () throws IOException {
@@ -298,6 +315,8 @@ public class Main_Activity extends AppCompatActivity {
 
     public void GetState() throws InterruptedException{
 
+
+        // Sw 1
         try {
             sendData("1");
             beginListenForData();
@@ -315,11 +334,67 @@ public class Main_Activity extends AppCompatActivity {
         Thread.sleep(500);
 
 
+        // Sw 2
+        try {
+            sendData("2");
+            beginListenForData();
+            if (CheckTwo.equals("2")) {
+                s2.setChecked(true);
+            }else{
+                s2.setChecked(false);
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
+        }
 
+
+        // Sw 3
         try {
             sendData("3");
             beginListenForData();
-            if (CheckTwo.equals("2")) {
+            if (CheckTwo.equals("3")) {
+                s2.setChecked(true);
+            }else{
+                s2.setChecked(false);
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
+        }
+
+
+        // Sw 4
+        try {
+            sendData("4");
+            beginListenForData();
+            if (CheckTwo.equals("4")) {
+                s2.setChecked(true);
+            }else{
+                s2.setChecked(false);
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
+        }
+
+
+        // Sw 5
+        try {
+            sendData("5");
+            beginListenForData();
+            if (CheckTwo.equals("5")) {
+                s2.setChecked(true);
+            }else{
+                s2.setChecked(false);
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(),"Cant Get Data 2",Toast.LENGTH_SHORT).show();
+        }
+
+
+        // SW 6
+        try {
+            sendData("6");
+            beginListenForData();
+            if (CheckTwo.equals("6")) {
                 s2.setChecked(true);
             }else{
                 s2.setChecked(false);
