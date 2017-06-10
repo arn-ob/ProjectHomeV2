@@ -57,7 +57,7 @@ public class Main_Activity extends AppCompatActivity {
             sw4 = false,
             sw5 = false,
             sw6 = false;
-    String CheckOne = "0" ,
+    String  CheckOne = "0",
             CheckTwo = "0",
             CheckThree = "0",
             CheckFour = "0",
@@ -323,7 +323,7 @@ public class Main_Activity extends AppCompatActivity {
 
         // Sw 1
         try {
-            sendData("1");
+            sendData("R1");
             beginListenForData();
             if (CheckOne.equals("1")) {
                 s1.setChecked(true);
@@ -344,7 +344,7 @@ public class Main_Activity extends AppCompatActivity {
 
         // Sw 2
         try {
-            sendData("2");
+            sendData("R2");
             beginListenForData();
             if (CheckTwo.equals("2")) {
                 s2.setChecked(true);
@@ -363,7 +363,7 @@ public class Main_Activity extends AppCompatActivity {
 
         // Sw 3
         try {
-            sendData("3");
+            sendData("R3");
             beginListenForData();
             if (CheckThree.equals("3")) {
                 s3.setChecked(true);
@@ -383,7 +383,7 @@ public class Main_Activity extends AppCompatActivity {
 
         // Sw 4
         try {
-            sendData("4");
+            sendData("R4");
             beginListenForData();
             if (CheckFour.equals("4")) {
                 s4.setChecked(true);
@@ -403,7 +403,7 @@ public class Main_Activity extends AppCompatActivity {
 
         // Sw 5
         try {
-            sendData("5");
+            sendData("R5");
             beginListenForData();
             if (CheckFive.equals("5")) {
                 s5.setChecked(true);
@@ -423,7 +423,7 @@ public class Main_Activity extends AppCompatActivity {
 
         // SW 6
         try {
-            sendData("6");
+            sendData("R6");
             beginListenForData();
             if (CheckSix.equals("6")) {
                 s6.setChecked(true);
